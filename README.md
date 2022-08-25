@@ -145,7 +145,7 @@ flying_object_detect.py contains a script that controls the approach of the dron
 ```bash
 python3 Object_detection/flying_object_detect.py
 ```
-Be aware that, with the current state of the script, you'll need to have a separate program to stop the Cognifly before it's automated landing. To abort, you can simply interrupt (ctrl+C) and then start another script that simply send a land and a disarm command.
+Be aware that, with the current state of the script, you'll need to have a separate program to stop the Cognifly before it's automated landing ends. To abort, you can simply interrupt (ctrl+C) and then start another script that simply send a land and a disarm command.
 
 Feel free to modify both files to test your own models, detect different objects from [coco_labels.txt](Object_detection/coco_labels.txt) or tune the parameters for the object approach like the PIDs gains, the frames width and height or the drone hostname. A new implementation using directly the TensorFlow lite API would be interesting to enable the use of a wider variety of models.
 
