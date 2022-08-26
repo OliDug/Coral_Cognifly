@@ -145,7 +145,7 @@ flying_object_detect.py contains a script that controls the approach of the dron
 ```bash
 python3 Object_detection/flying_object_detect.py
 ```
-Be aware that, with the current state of the script, you'll need to have a separate program to stop the Cognifly before it's automated landing ends. To abort, you can simply interrupt (ctrl+C) and then start another script that simply send a land and a disarm command.
+Be aware that, with the current state of the script, you'll need to have a separate program to stop the Cognifly before it's automated landing ends. To abort, you can simply interrupt (ctrl+C) and then start another script that simply send a land and a disarm command. Also, you won't be able to control the yaw of the drone with this kind of detection, because the model only outputs the size and position of the detected bounding boxes.
 
 Feel free to modify both files to test your own models, detect different objects from [coco_labels.txt](Object_detection/coco_labels.txt) or tune the parameters for the object approach like the PIDs gains, the frames width and height or the drone hostname. A new implementation using directly the TensorFlow lite API would be interesting to enable the use of a wider variety of models.
 
@@ -181,7 +181,7 @@ You can now run one of the two AprilTag detection scripts. Use [tag_detect.py](A
 python3 AprilTag_detection/tag_detect.py
 ```
 
-[flying_tag_detect.py](AprilTag_detection/flying_tag_detect.py) can be used for an automated approach of an AprilTag that is stuck on the base station and for landing on the station. The drone may not land properly on the station everytime because of the way it currently needs to land, which is almost by throwing itself. In that case, the landing sequence can be tuned in the script. You can launch it with the command :
+[flying_tag_detect.py](AprilTag_detection/flying_tag_detect.py) can be used for an automated approach of an AprilTag that is stuck on the base station and for landing on the station. One advantage of this detection over the machine learing one is that you'll be able to control the yaw of the drone with the integrated pose estimator. The drone may not land properly on the station everytime because of the way it currently needs to land, which is almost by throwing itself. In that case, the landing sequence can be tuned in the script. You can launch it with the command :
 
 ```bash
 python3 AprilTag_detection/flying_tag_detect.py
@@ -199,3 +199,19 @@ Failed to connect: org.bluez.Error.Failed
 ```
 
 This will need further troubleshooting in order to make it work.
+
+## Current results
+
+### Weight
+
+In this configuration, the Cognifly has a total weight of 284.7 grams, which is a lot more than the 250 grams goal. Some optimizations shall be done to reduce this number. 
+
+### Flight time
+
+When using object detection on the Edge TPU for the approach, the drone could fly for a maximum of 12 minutes 14 seconds. If AprilTag detection is used the time is reduced to 11 minutes 21 seconds.
+
+### Detection frequency
+
+The object detection and AprilTag detection approaches worked at frequencies around 10 Hz and 12 Hz respectively. 
+
+All things considered, the AprilTag detection performed better when trying to land the Cognifly. Even if it cuts the flight time by almost 1 minute, it has a slightly better detection frequency, it's detections a more reliable and it makes it possible to control the yaw. 
