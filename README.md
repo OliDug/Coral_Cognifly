@@ -12,7 +12,7 @@ If you're having trouble connecting to the board with MDT, make sure you're conn
 
 ### Attach the Coral and it's camera to the drone
 
-To attach a Coral board instead of a Raspberry Pi Zero to a Cognifly, a new support must be printed for it and it's camera. You can find three stl files containing the three pieces you'll need in the [Coral_stl](Coral_stl) folder.
+To attach a Coral board instead of a Raspberry Pi Zero to a Cognifly, a new support must be printed for it and it's camera. You can find three stl files containing the three pieces you'll need in the [Coral_support](Coral_support) folder. There are also two pictures to help for assembly.
 
 ### Connections with the flight controller
 
