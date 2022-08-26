@@ -188,7 +188,7 @@ python3 AprilTag_detection/flying_tag_detect.py
 ```
 Like for the [object detection](#object-detection) approach, you'll need another script to stop the Cognifly before it's automated landing.
 
-The reason the drone has to land this way is the time-of-flight sensor that gets the actual height of the drone for the control loop on the flight controller. When it goes above the base station, the detected height suddenly lowers. That causes the drone to increase it's altitude to restore the height it's supposed to be at. One way to completely get rid of the problem would be to modify the firmware on the flight controller to use a different position estimator, but this is far from being a straight forward solution.
+The reason the drone has to land this way is the time-of-flight sensor that gets the actual height of the drone for the control loop on the flight controller. When it goes above the base station, the detected height suddenly lowers. That causes the drone to increase it's altitude to restore the height it's supposed to be at. One way to completely get rid of the problem would be to modify the firmware on the flight controller to use a different position estimator, but this is far from being a straight forward solution. ¸[Cognifly_landing.mp4](Cognifly_Landing.mp4) contains footage of the latest landing achieved.
 
 ## Control the Cognifly with a bluetooth PS4 controller
 
